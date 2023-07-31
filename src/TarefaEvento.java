@@ -26,7 +26,11 @@ public class TarefaEvento extends Lembrete {
 
             while (true) {
                 try {
-                    System.out.println("\nCerto, vamos criar o " + tipo.getSimpleName() + "!");
+                    if (tipo.getSimpleName().equalsIgnoreCase("Tarefa")){
+                        System.out.println("\nCerto, vamos criar uma " + tipo.getSimpleName() + "!");
+                    }else {
+                        System.out.println("\nCerto, vamos criar um " + tipo.getSimpleName() + "!");
+                    }
                     System.out.print("Insira o nome: ");
                     tarefaEvento.nome = scan.nextLine();
 
