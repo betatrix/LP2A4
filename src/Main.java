@@ -17,14 +17,12 @@ public class Main {
 
             switch (resposta) {
                 case 1:
-                    Evento meuEvento = new Evento();
-                    meuEvento.criarEvento();
+                    Evento evento = (Evento) TarefaEvento.criarTarefaEvento(Evento.class);
                 case 2:
                     Lembrete meuLembrete = new Lembrete();
 //              meuLembrete.criarLembrete();
                 case 3:
-                    Tarefa minhaTarefa = new Tarefa();
-//              minhaTarefa.criarTarefa();
+                    Tarefa tarefa = (Tarefa) TarefaEvento.criarTarefaEvento(Tarefa.class);
                 case 4:
                     break;
                 default:

@@ -3,7 +3,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class Evento extends Lembrete{
+public class Evento extends TarefaEvento{
     private String nome;
     private String local;
     private String descricao;
@@ -16,7 +16,7 @@ public class Evento extends Lembrete{
     public Evento() {
     }
 
-//Evento --------------------------------------------------------------------------------------------------------------
+/*//Evento --------------------------------------------------------------------------------------------------------------
     public void criarEvento() {
         String resposta;
 
@@ -148,7 +148,7 @@ public class Evento extends Lembrete{
     public String getDataFormatada() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return data.format(formatter);
-    }
+    }*/
 
 
 // Getter & Setters ----------------------------------------------------------------------------------------------------
