@@ -1,179 +1,132 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Evento extends TarefaEvento{
-    private String nome;
+public class Evento extends TarefaEvento {
     private String local;
-    private String descricao;
-    private LocalDate data;
-    private LocalTime horaInicio;
     private LocalTime horaFim;
-    Scanner scan = new Scanner(System.in);
-
+    private static List<Evento> listaEventos = new ArrayList<>();
 
     public Evento() {
     }
 
-/*//Evento --------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------------------------
     public void criarEvento() {
+        super.criarTarefaEvento(Evento.class);
+        Scanner scan = new Scanner(System.in);
         String resposta;
+
+        System.out.println("Digite o local:");
+        local = scan.nextLine();
 
         while (true) {
             try {
-                System.out.println("\nCerto, vamos criar seu evento!");
-                System.out.print("Insira o nome: ");
-                nome = scan.nextLine();
+                System.out.println("Gostaria de inserir uma hora final? (S/N)");
+                resposta = scan.nextLine();
 
-                System.out.print("Insira o local: ");
-                local = scan.nextLine();
-
-                System.out.println("Gostaria de inserir uma descrição? (S/N)");
-
-                while (true) {
-                    resposta = scan.nextLine();
-
-                    if (resposta.equalsIgnoreCase("s")) {
-                        System.out.print("Insira uma descrição: ");
-                        descricao = scan.nextLine();
-                        break;
-                    } else if (resposta.equalsIgnoreCase("n")) {
-                        break;
-                    } else {
-                        System.out.println("Valor inválido, insira novamente (S/N)");
-                    }
+                if (resposta.equalsIgnoreCase("s")) {
+                    System.out.println("Insira a hora final: (HH:MM)");
+                    String horaF_Input = scan.nextLine();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                    horaFim = LocalTime.parse(horaF_Input, formatter);
                 }
-
-                while (true) {
-                    try {
-                        System.out.println("Insira a data: (DD/MM/AAAA)");
-                        String dataInput = scan.nextLine();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                        data = LocalDate.parse(dataInput, formatter);
-                        break;
-                    } catch (Exception e) {
-                        System.out.println("Informe uma data válida!\n");
-                    }
-                }
-
-                while (true) {
-                    try {
-                        System.out.println("Insira a hora do início: (HH:MM) ");
-                        String horaI_Input = scan.nextLine();
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-                        horaInicio = LocalTime.parse(horaI_Input, formatter);
-                        break;
-                    } catch (Exception e) {
-                        System.out.print("Insira um horário válido!\n");
-                    }
-                }
-
-                while (true) {
-                    try {
-                        System.out.println("Gostaria de inserir uma hora final? (S/N)");
-                        resposta = scan.nextLine();
-
-                        while (true) {
-                            if (resposta.equalsIgnoreCase("s")) {
-                                System.out.print("Insira a hora final: (HH:MM) ");
-                                String horaF_Input = scan.nextLine();
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-                                horaFim = LocalTime.parse(horaF_Input, formatter);
-                                break;
-                            } else if (resposta.equalsIgnoreCase("n")) {
-                                break;
-                            } else {
-                                System.out.println("Valor inválido, insira novamente (S/N)");
-                            }
-                        } break;
-                    } catch (Exception e) {
-                        System.out.print("Insira um horário válido!\n");
-                    }
-                } break;
+                break;
             } catch (Exception e) {
-                System.out.println("Dados inseridos incorretamente. Tente novamente!\n");
+                System.out.println("Insira um horário válido!");
             }
         }
 
         System.out.println("Gostaria de criar um lembrete para o seu evento? (S/N)");
-        if (resposta.equalsIgnoreCase("s")){
-            criarLembrete();
+        resposta = scan.nextLine();
+        if (resposta.equalsIgnoreCase("s")) {
+            super.criarLembrete();
             System.out.println("Lembrete criado e evento salvo!");
         } else {
             System.out.println("Tudo bem! Evento salvo com sucesso :)");
         }
+        listaEventos.add(this);
     }
 
+    public static List<Evento> getListaEventos() {
+        return listaEventos;
+    }
 
-//    Lembrete ---------------------------------------------------------------------------------------------------------
-    public void criarLembrete() {
-        String resposta;
+//----------------------------------------------------------------------------------------------------------------------
+    void consultarEventos() {
+        List<Evento> listaEventos = Evento.getListaEventos();
 
-        System.out.print("Insira um nome para o lembrete: ");
-        setMensagem(scan.nextLine());
-
-        while (true){
-            try {
-                System.out.println("Insira uma data para receber uma notificação: (DD/MM/AAAA) ");
-                String dataInput = scan.nextLine();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                data = LocalDate.parse(dataInput, formatter);
-                break;
-            } catch (Exception e) {
-                System.out.println("Informe uma data válida!\n");
-            }
+        if (listaEventos.isEmpty()) {
+            System.out.println("Não há eventos cadastrados.");
+            return;
         }
 
-        while (true){
-            try {
-                System.out.println("Insira um horário: (HH:MM) ");
-                String horaI_Input = scan.nextLine();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-                horaInicio = LocalTime.parse(horaI_Input, formatter);
-                break;
-            } catch (Exception e){
-                System.out.print("Insira um horário válido!\n");
-            }
-        }
+        System.out.println("\n****** EVENTOS CADASTRADOS ******");
 
-        System.out.println("Esse lembrete se repete? (S/N)");
-        resposta = scan.nextLine();
-        if (resposta.equalsIgnoreCase("s")){
-            setRepete(true);
+        for (int i = 0; i < listaEventos.size(); i++) {
+            Evento evento = listaEventos.get(i);
+            System.out.println((i + 1) + ") Evento: " + evento.getNome());
+            System.out.println("   Descrição: " + evento.getDescricao());
+            System.out.println("   Local: " + evento.getLocal());
+            System.out.println("   Data: " + evento.getData());
+
+            if (evento.getHoraFim() != null) {
+                System.out.println("   Hora: " + evento.getHoraInicio());
+            } else {
+                System.out.println("   Hora: " + evento.getHoraInicio() + "-" + evento.getHoraFim());
+            }
         }
     }
 
-// Data formatada ------------------------------------------------------------------------------------------------------
-    public String getDataFormatada() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return data.format(formatter);
-    }*/
+    void excluirEvento() {
+        Scanner scan = new Scanner(System.in);
+        List<Evento> listaEvento = Evento.getListaEventos();
 
+        if (listaEventos.isEmpty()) {
+            System.out.println("Não há eventos cadastradas para excluir.");
+            return;
+        }
 
-// Getter & Setters ----------------------------------------------------------------------------------------------------
+        System.out.println("\n****** EXCLUSÃO DE EVENTOS ******");
+
+        for (int i = 0; i < listaEventos.size(); i++) {
+            Evento evento = listaEventos.get(i);
+            System.out.println((i + 1) + ") Evento: " + evento.getNome());
+            System.out.println("   Descrição: " + evento.getDescricao());
+            System.out.println("   Data: " + evento.getData());
+        }
+
+        System.out.print("Digite o número da evento que deseja excluir (digite 0 para cancelar): ");
+        int indiceEvento = scan.nextInt();
+
+        if (indiceEvento == 0) {
+            return;
+        }
+
+        if (indiceEvento < 1 || indiceEvento > listaEventos.size()) {
+            System.out.println("Índice inválido!");
+            return;
+        }
+
+        Evento eventoExcluir = listaEventos.get(indiceEvento - 1);
+        listaEventos.remove(eventoExcluir);
+        System.out.println("Tarefa excluída com sucesso!");
+    }
+
+// Getters & Setters-----------------------------------------------------------------------------------------------------
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getLocal() {
         return local;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public LocalDate getData() {
@@ -188,15 +141,9 @@ public class Evento extends TarefaEvento{
         return horaInicio;
     }
 
-    public void setHoraInicio(LocalTime hora) {
-        this.horaInicio = hora;
-    }
-
     public LocalTime getHoraFim() {
         return horaFim;
     }
 
-    public void setHoraFim(LocalTime hora) {
-        this.horaFim = hora;
-    }
 }
+
