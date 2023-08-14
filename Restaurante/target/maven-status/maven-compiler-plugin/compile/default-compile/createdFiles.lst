@@ -1,1 +1,9 @@
+br/edu/ifsp/restaurante/Restaurante/Model/Funcionario.class
+br/edu/ifsp/restaurante/Restaurante/dto/FuncionarioResponseDTO.class
+br/edu/ifsp/restaurante/Restaurante/Controller/FuncionarioController.class
+br/edu/ifsp/restaurante/Restaurante/Controller/CardapioController.class
+br/edu/ifsp/restaurante/Restaurante/Model/Prato.class
 br/edu/ifsp/restaurante/Restaurante/RestauranteApplication.class
+br/edu/ifsp/restaurante/Restaurante/dto/CardapioResponseDTO.class
+br/edu/ifsp/restaurante/Restaurante/dto/CardapioRequestDTO.class
+br/edu/ifsp/restaurante/Restaurante/dto/FuncionarioRequestDTO.class
