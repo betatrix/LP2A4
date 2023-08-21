@@ -1,11 +1,10 @@
 package br.edu.ifsp.restaurante.Restaurante.Controller;
 
-import br.edu.ifsp.restaurante.Restaurante.Model.Endereco;
 import br.edu.ifsp.restaurante.Restaurante.Model.Pedido;
-import br.edu.ifsp.restaurante.Restaurante.Repository.EnderecoRepository;
+import br.edu.ifsp.restaurante.Restaurante.Model.Prato;
+import br.edu.ifsp.restaurante.Restaurante.Repository.CardapioRepository;
+import br.edu.ifsp.restaurante.Restaurante.Repository.ClienteRepository;
 import br.edu.ifsp.restaurante.Restaurante.Repository.PedidoRepository;
-import br.edu.ifsp.restaurante.Restaurante.dto.EnderecoRequestDTO;
-import br.edu.ifsp.restaurante.Restaurante.dto.EnderecoResponseDTO;
 import br.edu.ifsp.restaurante.Restaurante.dto.PedidoRequestDTO;
 import br.edu.ifsp.restaurante.Restaurante.dto.PedidoResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,14 @@ import java.util.List;
 @RestController
 @RequestMapping("pedido")
 public class PedidoController {
-
     @Autowired
     PedidoRepository pedidoRepository;
+
+    @Autowired
+    ClienteRepository clienteRepository;
+
+    @Autowired
+    CardapioRepository cardapioRepository;
 
     List<Pedido> pedidos = new ArrayList<>();
 
@@ -29,8 +33,12 @@ public class PedidoController {
     }
 
     @PostMapping
-    public void addPedido(@RequestBody Pedido pedido){
-        pedidoRepository.save(pedido);
+    public void addPedido(@RequestBody PedidoRequestDTO data){
+        List<Prato> p = new ArrayList<>();
+        for (Integer id: data.pratos()){
+            p.add(cardapioRepository.findById(id).get());
+        }
+        pedidoRepository.save(new Pedido(data.descricao(), clienteRepository.findBy(data.cliente()).get(), p));
     }
 
     @DeleteMapping("/{id}")

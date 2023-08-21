@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +20,17 @@ public class Pedido {
     @Column
     private String descricao;
 
-    public Pedido(PedidoRequestDTO data) {
-//        this.descricao = data.descricao();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "pedido_prato", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "prato_id"))
+    private List<Prato> pratos;
+
+    public Pedido(String descricao, Cliente cliente, List<Prato> pratos) {
+        this.descricao = descricao;
+        this.cliente = cliente;
+        this.pratos = pratos;
     }
 }

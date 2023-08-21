@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +23,11 @@ public class Cliente {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    public Cliente(ClienteRequestDTO data) {
-        this.nome = data.nome();
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Pedido> pedidos;
+
+    public Cliente(ClienteRequestDTO clienteRequestDTO) {
+        this.nome = clienteRequestDTO.nome();
+        this.endereco = clienteRequestDTO.endereco();
     }
 }

@@ -1,4 +1,7 @@
 package br.edu.ifsp.restaurante.Restaurante.dto;
 
-public record PedidoRequestDTO() {
+
+import java.util.List;
+
+public record PedidoRequestDTO(String descricao, Integer cliente, List<Integer> pratos) {
 }
