@@ -3,15 +3,15 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Cliente {
+public class Cliente1 {
     public static void main(String[] args) {
         try {
             Scanner scan = new Scanner(System.in);
-            Socket cliente = new Socket("localhost", 12345);
+            Socket cliente1 = new Socket("localhost", 12345);
 
-            ClienteServidorThread clienteServidorThread = new ClienteServidorThread(cliente);
-            clienteServidorThread.start();
-            PrintStream saida = new PrintStream(cliente.getOutputStream());
+            ClientesThread clientesThread = new ClientesThread(cliente1);
+            clientesThread.start();
+            PrintStream saida = new PrintStream(cliente1.getOutputStream());
 
             while (true){
                 String mensagem = scan.nextLine();
