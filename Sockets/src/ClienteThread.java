@@ -4,10 +4,10 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 //Uma thread é uma linha de execução dentro de um programa que permite a execução simultânea de tarefas
-public class ClientesThread extends Thread {
+public class ClienteThread extends Thread {
     private Socket cliente;
 
-    public ClientesThread(Socket cliente){
+    public ClienteThread(Socket cliente){
         this.cliente = cliente;
     }
 
