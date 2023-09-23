@@ -1,4 +1,4 @@
-package servlets;
+package edu.evento.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet
+@WebServlet("/pageone")
 public class ServletOne extends HttpServlet {
         @Override
         protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/PageOne.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/PageOne.jsp");
             dispatcher.forward(req,resp);
         }
 }

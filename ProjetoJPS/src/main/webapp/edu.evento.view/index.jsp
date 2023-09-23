@@ -16,13 +16,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/jsp/PageOne.jsp">Ir para a página um</a>
+                  <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/edu.evento.view/pageone">Ir para a página um</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"href="${pageContext.request.contextPath}/jsp/PageTwo.jsp">Ir para a página dois</a>
+                  <a class="nav-link"href="${pageContext.request.contextPath}/edu.evento.view/pagetwo">Ir para a página dois</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/jsp/PageTree.jsp">Ir para a página três</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/edu.evento.view/pagetree">Ir para a página três</a>
                 </li>
               </ul>
             </div>

@@ -6,26 +6,26 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>PageOne</servlet-name>
-    <servlet-class>servlets.ServletOne</servlet-class>
+    <servlet-class>edu.evento.controller.ServletOne</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PageOne</servlet-name>
-    <url-pattern>/jsp/pageone</url-pattern>
+    <url-pattern>/edu.evento.view/pageone</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>PageTwo</servlet-name>
-    <servlet-class>servlets.ServletTwo</servlet-class>
+    <servlet-class>edu.evento.controller.ServletTwo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PageTwo</servlet-name>
-    <url-pattern>/jsp/pagetwo</url-pattern>
+    <url-pattern>/edu.evento.view/pagetwo</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>PageTree</servlet-name>
-    <servlet-class>servlets.ServletTree</servlet-class>
+    <servlet-class>edu.evento.controller.ServletTree</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PageTree</servlet-name>
-    <url-pattern>/jsp/pagetree</url-pattern>
+    <url-pattern>/edu.evento.view/pagetree</url-pattern>
   </servlet-mapping>
 </web-app>

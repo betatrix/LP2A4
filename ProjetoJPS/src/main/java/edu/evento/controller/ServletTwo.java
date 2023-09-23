@@ -1,4 +1,4 @@
-package servlets;
+package edu.evento.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,10 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet
-public class ServletIndex extends HttpServlet {
+public class ServletTwo extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/pageTree.jsp");
         dispatcher.forward(req,resp);
     }
 }
