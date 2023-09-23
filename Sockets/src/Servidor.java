@@ -5,9 +5,13 @@ import java.net.Socket;
 public class Servidor {
     public static void main(String[] args) {
         try {
+            //o socket serve como comunicação entre duas máquinas
+
+            //criar um novo servidor na porta escolhida
             ServerSocket servidor = new ServerSocket(12345);
             System.out.println("Servidor ativo ouvindo a porta 12345.");
 
+            //vai esperar o cliente aceitar esse socket
             Socket cliente1 = servidor.accept();
             System.out.println("Cliente 1 conectado!");
 
@@ -21,7 +25,7 @@ public class Servidor {
             servidor2.start();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //pode lançar a exceção também no psvm para não fazer try/catch
         }
     }
 }

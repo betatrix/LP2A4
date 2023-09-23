@@ -5,27 +5,28 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class ServidorThread extends Thread {
-    private Socket cliente1;
-    private Socket cliente2;
+    private Socket socket1;
+    private Socket socket2;
 
 
-    public ServidorThread(Socket cliente1, Socket cliente2) {
-        this.cliente1 = cliente1;
-        this.cliente2 = cliente2;
+    public ServidorThread(Socket socket1, Socket socket2) {
+        this.socket1 = socket1;
+        this.socket2 = socket2;
     }
 
     @Override
     public void run(){
         try{
             //Input: entrada, Output: saída
-            InputStreamReader inputStreamReader = new InputStreamReader(cliente2.getInputStream());
+            InputStreamReader inputStreamReader = new InputStreamReader(socket1.getInputStream());
             BufferedReader reader = new BufferedReader(inputStreamReader);
-            String readingLine;
             //Aqui o PrintStream é utilizado para gravar registros em arquivos de saída.
-            PrintStream output1 = new PrintStream(cliente1.getOutputStream());
+            PrintStream output = new PrintStream(socket2.getOutputStream());
+
+            String readingLine;
 
             while ((readingLine = reader.readLine()) != null){
-                output1.println(readingLine);
+                output.println(readingLine);
             }
 
         }catch (IOException e){

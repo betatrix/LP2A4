@@ -9,8 +9,8 @@ public class Cliente1 {
             Scanner scan = new Scanner(System.in);
             Socket cliente1 = new Socket("localhost", 12345);
 
-            ClientesThread clientesThread = new ClientesThread(cliente1);
-            clientesThread.start();
+            ClienteThread clienteThread = new ClienteThread(cliente1);
+            clienteThread.start();
             PrintStream saida = new PrintStream(cliente1.getOutputStream());
 
             while (true){

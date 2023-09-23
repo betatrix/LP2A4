@@ -16,14 +16,13 @@ public class ClienteThread extends Thread {
     public void run(){
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(cliente.getInputStream());
-
             BufferedReader reader = new BufferedReader(inputStreamReader);
 
-            String readingLine;  // Variável para armazenar a linha lida do BufferedReader
+            String readingLine;
 
             // Loop para ler linhas de texto enquanto elas não forem nulas
             while ((readingLine = reader.readLine()) != null){
-                System.out.println("Usuário: " + readingLine);  // Imprime a linha lida
+                System.out.println("Usuário: " + readingLine);
             }
         } catch (IOException e) {
             e.printStackTrace();  // Em caso de erro de entrada/saída, imprime o erro
