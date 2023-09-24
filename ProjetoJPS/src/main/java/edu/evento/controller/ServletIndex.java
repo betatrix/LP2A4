@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ServletIndex extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/Index.jsp");
         dispatcher.forward(req,resp);
     }
 }

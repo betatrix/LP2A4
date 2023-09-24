@@ -5,24 +5,24 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>Semana do Programador</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Bem-vindo ao Cadastro de Clientes!</h1>
+        <h1>Bem-vindo à Semana do Programador!</h1>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
           <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/edu.evento.view/pageone">Ir para a página um</a>
+                  <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/edu.evento.view/ListarAtividade.jsp">Cursos e Palestras</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"href="${pageContext.request.contextPath}/edu.evento.view/pagetwo">Ir para a página dois</a>
+                  <a class="nav-link"href="${pageContext.request.contextPath}/edu.evento.view/LoginOrganizador.jsp">Login do Organizador</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/edu.evento.view/pagetree">Ir para a página três</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/edu.evento.view/AdminAtividade.jsp">Ir para a página três</a>
                 </li>
               </ul>
             </div>

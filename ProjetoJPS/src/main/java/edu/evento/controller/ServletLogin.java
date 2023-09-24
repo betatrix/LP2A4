@@ -10,10 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet
-public class ServletTwo extends HttpServlet {
+public class ServletLogin extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/pageTree.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/LoginOrganizador.jsp");
         dispatcher.forward(req,resp);
     }
 }

@@ -9,11 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/pageone")
-public class ServletOne extends HttpServlet {
+@WebServlet()
+public class ServletListagem extends HttpServlet {
         @Override
         protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/PageOne.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/edu.evento.view/ListarAtividade.jsp");
             dispatcher.forward(req,resp);
         }
 }
