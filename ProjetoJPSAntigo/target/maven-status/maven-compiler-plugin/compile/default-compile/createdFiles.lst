@@ -1,0 +1,10 @@
+br\edu\ifsp\model\Organizador.class
+br\edu\ifsp\model\Atividade.class
+br\edu\ifsp\servlets\ServletTree.class
+br\edu\ifsp\servlets\ServletIndex.class
+br\edu\ifsp\model\Participante.class
+br\edu\ifsp\repository\ParticipanteRepository.class
+br\edu\ifsp\servlets\ServletOne.class
+br\edu\ifsp\repository\OrganizadorRepository.class
+br\edu\ifsp\servlets\ServletTwo.class
+br\edu\ifsp\repository\AtividadeRepository.class
